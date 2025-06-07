@@ -9,7 +9,9 @@ http.createServer(function(req,res){
 
     if(req.url == '/fileupload'){
 
-            var form = formidable({ multiples: true });
+            // var form = formidable({ multiples: true });
+
+            var form = new formidable.IncomingForm();
 
             //console.debug(form);
 
@@ -20,9 +22,9 @@ http.createServer(function(req,res){
 
                 console.log(files);
                
-                var prev_path = '../Urmi/'+ fields.fileupload;
+                var prev_path = '../NODE-COURSE-FOR-BEGINNERS/'+ fields.fileupload;
 
-                var new_path = '../Urmi/files/'+ fields.fileupload;
+                var new_path = '../NODE-COURSE-FOR-BEGINNERS/files/'+ fields.fileupload;
 
                 console.debug(fields.fileupload);
 
@@ -30,7 +32,7 @@ http.createServer(function(req,res){
 
 
                 fs.rename(prev_path, new_path, function (er){
-                             s
+                             
                     if(er) throw er;
 
                     res.write('File uploaded and moved successfully!');
